@@ -2,8 +2,8 @@ import type { PortfolioData } from './types';
 
 export const defaultPortfolioData: PortfolioData = {
   profile: {
-    name: "Alex Mercer",
-    jobTitle: "Senior Full Stack Engineer",
+    name: "Apoorva Verma",
+    jobTitle: "Full Stack Engineer",
     gender: "non-binary",
     experience: "6+ Years Exp.",
     company: "Vortex Labs",
