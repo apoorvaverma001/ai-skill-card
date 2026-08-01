@@ -21,6 +21,7 @@ export interface SocialLinks {
   discord: string;
   gmail: string;
   resumeUrl: string;
+  kaggle?: string;
 }
 
 export interface Skill {

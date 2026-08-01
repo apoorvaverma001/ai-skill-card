@@ -9,9 +9,9 @@ export default {
     extend: {
       colors: {
         dark: {
-          canvas: '#0A0B0E',
+          canvas: '#090A0F',
           card: '#12141A',
-          border: '#1E222B',
+          border: '#1A1D26',
           text: '#F3F4F6',
           muted: '#9CA3AF',
         },

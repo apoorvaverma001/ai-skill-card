@@ -8,6 +8,8 @@ import {
 interface StepperFormProps {
   data: PortfolioData;
   onChange: (newData: PortfolioData) => void;
+  currentStep: number;
+  setCurrentStep: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const PRESET_AVATARS = [
@@ -17,8 +19,7 @@ const PRESET_AVATARS = [
   { name: 'Retro Arcade', url: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=250&auto=format&fit=crop&q=80' }
 ];
 
-export const StepperForm: React.FC<StepperFormProps> = ({ data, onChange }) => {
-  const [currentStep, setCurrentStep] = useState(1);
+export const StepperForm: React.FC<StepperFormProps> = ({ data, onChange, currentStep, setCurrentStep }) => {
 
   // Helper to update specific sub-state
   const updateProfile = (fields: Partial<typeof data.profile>) => {
