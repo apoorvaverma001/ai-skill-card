@@ -1,22 +1,22 @@
-import type { PortfolioData } from './types';
+import type { PortfolioData } from '../types';
 
-export const defaultPortfolioData: PortfolioData = {
+export const apoorvaPortfolioData: PortfolioData = {
   profile: {
     name: "Apoorva Verma",
-    jobTitle: "Senior Full Stack & AI Engineer",
-    gender: "male",
-    experience: "4+ Years",
-    company: "SkillCard Labs",
+    jobTitle: "Full Stack & AI Engineer",
+    gender: "female",
+    experience: "2+ Years",
+    company: "Sasahyog Technologies Private Limited",
     companyLogoUrl: "🚀",
-    location: "Bengaluru, India",
-    email: "apoorva.verma@skillcard.io",
-    phone: "+91 98765 43210",
+    location: "Uttar Pradesh, India",
+    email: "apoorva92verma@gmail.com",
+    phone: "+91 6398437478",
     avatarPreset: "cyberpunk-neon",
-    avatarUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=250&auto=format&fit=crop&q=80",
-    bio: "Senior Full Stack & AI Engineer specializing in large language models, agentic workflows, custom React interfaces, and high-performance serverless backends. Passionate about crafting pixel-perfect micro-interactions and secure software."
+    avatarUrl: "https://lh3.googleusercontent.com/d/1Dq4HToia3V7kN5PYFTwRElOaKHRF8h4_",
+    bio: "Full Stack & AI Engineer specializing in large language models, agentic workflows, custom React interfaces, and high-performance serverless backends. Passionate about crafting pixel-perfect micro-interactions and secure software."
   },
   socials: {
-    linkedin: "https://linkedin.com/in/apoorvaverma",
+    linkedin: "https://linkedin.com/in/apoorvaverma001",
     github: "https://github.com/apoorvaverma",
     leetcode: "https://leetcode.com/apoorvaverma",
     twitter: "https://x.com/apoorvaverma",
