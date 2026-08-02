@@ -185,8 +185,8 @@ export const LivePortfolio: React.FC<LivePortfolioProps> = ({ data, onStartEdit 
             <div className="absolute top-3 left-3 w-1.5 h-1.5 rounded-full bg-[#00D2C2] shadow-[0_0_8px_#00D2C2] z-20" />
             <div className="absolute top-3 right-3 w-1.5 h-1.5 rounded-full bg-[#0A9396] shadow-[0_0_8px_#0A9396] z-20" />
 
-            {/* Full-width avatar photo header */}
-            <div className="w-full h-64 relative overflow-hidden rounded-t-2xl flex-shrink-0 border-b border-[#1A1D26]">
+            {/* Full-width avatar photo container (Taller h-96 height) */}
+            <div className="w-full h-[380px] relative overflow-hidden flex-shrink-0 border-b border-[#1A1D26]">
               {data.profile.avatarUrl ? (
                 <img
                   src={data.profile.avatarUrl}
@@ -198,72 +198,60 @@ export const LivePortfolio: React.FC<LivePortfolioProps> = ({ data, onStartEdit 
                   ID
                 </div>
               )}
-              {/* Bottom gradient overlay to blend image into the dark card bg */}
-              <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#12141A] to-transparent pointer-events-none" />
-            </div>
+              
+              {/* Padded Text Overlay at the bottom of the photo */}
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#12141A] via-[#12141A]/85 to-transparent pt-20 pb-4 px-6 flex flex-col items-center text-center">
+                
+                {/* Available status badge floating near the middle-bottom */}
+                {/* <div className="mb-3 bg-[#0A0B0E]/80 backdrop-blur-sm text-[9px] text-emerald-400 border border-emerald-500/50 px-2.5 py-0.5 rounded-full flex items-center space-x-1.5 font-bold shadow-[0_0_8px_rgba(16,185,129,0.2)] whitespace-nowrap">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 pulse-dot flex-shrink-0" />
+                  <span>AVAILABLE FOR WORK</span>
+                </div> */}
 
-            {/* Profile Info Details (padded wrapper) */}
-            <div className="w-full px-6 pb-6 pt-4 flex flex-col items-center flex-1 justify-between">
-
-              {/* Name & Job Title */}
-              <div className="w-full flex flex-col items-center">
-                <h2 className="text-xl md:text-4xl font-extrabold tracking-tight text-white leading-tight">
+                <h2 className="text-xl md:text-2xl font-extrabold tracking-tight text-white leading-tight">
                   {data.profile.name || 'Anonymous Developer'}
                 </h2>
                 <p className="text-xs font-semibold text-[#00D2C2] uppercase tracking-wider mt-1.5">
-                  {data.profile.jobTitle || 'Senior Full Stack & AI Engineer'}
+                  {data.profile.jobTitle || 'Full Stack & AI Engineer'}
                 </p>
-
-                {/* Verified Badge */}
-                {/* <div className="mt-3 text-[10px] font-mono font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-3 py-1 rounded-full shadow-[0_0_10px_rgba(16,185,129,0.15)] flex items-center gap-1 select-none">
-                  <span>[ Verified Profile ✅ ]</span>
-                </div> */}
               </div>
+            </div>
+
+            {/* Profile Info Details (padded wrapper for the rest of details) */}
+            <div className="w-full px-6 pb-6 pt-4 flex flex-col items-center flex-1 justify-between">
+
 
               {/* Metadata columns */}
-              <div className="grid grid-cols-3 gap-2 w-full mt-5">
-                <div className="bg-[#0A0B0E]/60 p-2 rounded-xl border border-[#1A1D26] text-center">
-                  <span className="block text-[8px] text-dark-muted uppercase font-bold tracking-wider mb-0.5">Experience</span>
+              <div className="grid grid-cols-3 gap-3 w-full">
+                <div className="col-span-1 bg-[#0A0B0E]/60 p-3 rounded-xl border border-[#1A1D26] text-center flex flex-col ">
+                  <span className="block text-[8px] text-dark-muted uppercase font-bold tracking-wider mb-0.5">Work Experience</span>
                   <span className="text-[11px] font-extrabold text-white font-mono">{data.profile.experience || '4+ Years'}</span>
                 </div>
-                {/* <div className="bg-[#0A0B0E]/60 p-2 rounded-xl border border-[#1A1D26] text-center">
-                  <span className="block text-[8px] text-dark-muted uppercase font-bold tracking-wider mb-0.5">Gender</span>
-                  <span className="text-[11px] font-extrabold text-white font-mono">{genderLabel}</span>
-                </div> */}
-                <div className="bg-[#0A0B0E]/60 p-2 rounded-xl border border-[#1A1D26] text-center">
-                  <span className="block text-[8px] text-dark-muted uppercase font-bold tracking-wider mb-0.5">Company</span>
+                <div className="col-span-2 bg-[#0A0B0E]/60 p-3 rounded-xl border border-[#1A1D26] text-center flex flex-col ">
+                  <span className="block text-[8px] text-dark-muted uppercase font-bold tracking-wider mb-0.5">Current Company</span>
                   <span className="text-[11px] font-extrabold text-[#00D2C2] font-mono truncate block" title={data.profile.company}>{data.profile.company || 'N/A'}</span>
                 </div>
               </div>
 
-              {/* Details table */}
-              <div className="w-full space-y-2 mt-5 text-left border-t border-[#1A1D26] pt-4">
-                <div className="flex items-center space-x-2.5 text-xs text-slate-300">
+              {/* Details table and resume button */}
+              <div className="flex items-stretch gap-3 w-full mt-5 border-t border-[#1A1D26] pt-4 select-text">
+                {/* Contacts and location */}
+                <div className="flex-1 space-y-2 text-xs text-slate-300">
                   <MapPin size={13} className="text-[#00D2C2] flex-shrink-0" />
                   <span className="truncate">{data.profile.location || 'Remote'}</span>
                 </div>
                 <a
                   href={`mailto:${data.profile.email}`}
-                  className="flex items-center space-x-2.5 text-xs text-slate-300 hover:text-[#00D2C2] transition truncate"
+                  className="flex items-center space-x-2 text-xs text-slate-300 hover:text-[#00D2C2] transition truncate"
                 >
                   <Mail size={13} className="text-[#00D2C2] flex-shrink-0" />
                   <span className="truncate">{data.profile.email || 'Click to Email'}</span>
                 </a>
-                <div className="flex items-center space-x-2.5 text-xs text-slate-300">
+                <div className="flex items-center space-x-2 text-xs text-slate-300">
                   <Phone size={13} className="text-[#00D2C2] flex-shrink-0" />
                   <span>{data.profile.phone || 'N/A'}</span>
                 </div>
               </div>
-
-              {/* Hardcoded Bio details inside sidebar */}
-              <div className="w-full mt-4 bg-[#0A0B0E]/40 border border-[#1A1D26]/60 p-3 rounded-xl text-left text-[11px] text-slate-400 leading-relaxed font-sans font-normal">
-                {data.profile.bio}
-              </div>
-
-            </div>
-
-            {/* Action Bar (Resume & socialHandles) */}
-            <div className="w-full mt-4 border-t border-[#1A1D26] pt-4 px-6 pb-6 select-none flex-shrink-0">
 
               {/* Resume download Button */}
               {data.socials.resumeUrl && (
@@ -271,17 +259,29 @@ export const LivePortfolio: React.FC<LivePortfolioProps> = ({ data, onStartEdit 
                   href={data.socials.resumeUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="w-full flex items-center justify-center space-x-2 bg-[#00D2C2] text-slate-900 font-extrabold text-xs uppercase tracking-widest py-3 rounded-full hover:bg-[#00D2C2]/90 transition shadow-[0_0_15px_rgba(0,210,194,0.3)] mb-4 hover:scale-[1.02] transform duration-200"
+                  className="w-24 bg-[#00D2C2] hover:bg-[#00D2C2]/90 text-slate-900 font-extrabold text-[10px] uppercase tracking-wider rounded-xl transition-all shadow-[0_0_15px_rgba(0,210,194,0.3)] mb-4 hover:scale-[1.02] flex flex-col justify-center items-center gap-1 text-center flex-shrink-0"
                 >
                   <FileDown size={14} />
-                  <span>[ ⬇ RESUME ]</span>
+                  <span className="font-bold tracking-wider leading-none">RESUME</span>
                 </a>
               )}
+
+            </div>
+
+            {/* Action Bar (socialHandles) */}
+            <div className="w-full border-t border-[#1A1D26] pt-4 px-6 pb-6 select-none flex-shrink-0">
 
               {/* Floating dark social handles toolbar */}
               <div className="flex justify-around items-center bg-[#0A0B0E] border border-[#1A1D26] px-2 py-2 rounded-full shadow-inner">
                 {data.socials.github && (
-                  <a href={data.socials.github} target="_blank" rel="noreferrer" className="p-2 rounded-full text-slate-400 hover:text-[#00D2C2] transition-colors" title="GitHub">
+                  <a 
+                  href={data.socials.github} 
+                  target="_blank" 
+                  rel="noreferrer" 
+                  className="p-2 rounded-full text-slate-400 hover:text-[#00D2C2] transition-colors">
+                    <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-0.5 text-[9px] font-mono font-bold text-white bg-slate-950 border border-[#1A1D26] rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-30 shadow-[0_0_10px_rgba(0,0,0,0.5)]">
+                      GitHub
+                    </span>
                     <GithubIcon className="w-4 h-4" />
                   </a>
                 )}
