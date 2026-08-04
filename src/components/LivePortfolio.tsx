@@ -233,40 +233,44 @@ export const LivePortfolio: React.FC<LivePortfolioProps> = ({ data, onStartEdit 
                 </div>
               </div>
 
-              {/* Details table and resume button */}
-              <div className="flex items-stretch gap-3 w-full mt-5 border-t border-[#1A1D26] pt-4 select-text">
-                {/* Contacts and location */}
-                <div className="flex-1 space-y-2 text-xs text-slate-300">
-                  <MapPin size={13} className="text-[#00D2C2] flex-shrink-0" />
-                  <span className="truncate">{data.profile.location || 'Remote'}</span>
+              {/* Details table and resume button (Side-by-side Layout) */}
+              <div className="flex items-stretch gap-2 w-full mt-5 border-t border-[#1A1D26] pt-4 select-text">
+                
+                {/* Left side: Vertical Stack of Contacts */}
+                <div className="flex-1 space-y-2.5 text-xs text-slate-300 min-w-0">
+                  <div className="flex items-center space-x-3">
+                    <MapPin size={13} className="text-[#00D2C2] flex-shrink-0" style={{ filter: 'drop-shadow(0 0 3px rgba(0, 210, 194, 0.6))' }} />
+                    <span className="truncate">{data.profile.location || 'Remote'}</span>
+                  </div>
+                  <a
+                    href={`mailto:${data.profile.email}`}
+                    className="flex items-center space-x-2.5 hover:text-[#00D2C2] transition truncate block"
+                  >
+                    <Mail size={13} className="text-[#00D2C2] flex-shrink-0" style={{ filter: 'drop-shadow(0 0 3px rgba(0, 210, 194, 0.6))' }} />
+                    <span className="truncate">{data.profile.email || 'Click to Email'}</span>
+                  </a>
+                  <div className="flex items-center space-x-2.5">
+                    <Phone size={13} className="text-[#00D2C2] flex-shrink-0" style={{ filter: 'drop-shadow(0 0 3px rgba(0, 210, 194, 0.6))' }} />
+                    <span>{data.profile.phone || 'N/A'}</span>
+                  </div>
                 </div>
-                <a
-                  href={`mailto:${data.profile.email}`}
-                  className="flex items-center space-x-2 text-xs text-slate-300 hover:text-[#00D2C2] transition truncate"
-                >
-                  <Mail size={13} className="text-[#00D2C2] flex-shrink-0" />
-                  <span className="truncate">{data.profile.email || 'Click to Email'}</span>
-                </a>
-                <div className="flex items-center space-x-2 text-xs text-slate-300">
-                  <Phone size={13} className="text-[#00D2C2] flex-shrink-0" />
-                  <span>{data.profile.phone || 'N/A'}</span>
-                </div>
+
+                {/* Right side: Compact stretched Resume download Button */}
+                {data.socials.resumeUrl && (
+                  <a
+                    href={data.socials.resumeUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="w-24 bg-[#00D2C2] hover:bg-[#00D2C2]/90 text-slate-900 font-extrabold text-[10px] uppercase tracking-wider rounded-xl transition-all shadow-[0_0_12px_rgba(0,210,194,0.3)] hover:scale-[1.02] flex flex-col justify-center items-center gap-1 text-center flex-shrink-0"
+                  >
+                    <FileDown size={14} />
+                    <span className="font-bold tracking-wider leading-none">RESUME</span>
+                  </a>
+                )}
+
+              </div>
               </div>
 
-              {/* Resume download Button */}
-              {data.socials.resumeUrl && (
-                <a
-                  href={data.socials.resumeUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="w-24 bg-[#00D2C2] hover:bg-[#00D2C2]/90 text-slate-900 font-extrabold text-[10px] uppercase tracking-wider rounded-xl transition-all shadow-[0_0_15px_rgba(0,210,194,0.3)] mb-4 hover:scale-[1.02] flex flex-col justify-center items-center gap-1 text-center flex-shrink-0"
-                >
-                  <FileDown size={14} />
-                  <span className="font-bold tracking-wider leading-none">RESUME</span>
-                </a>
-              )}
-
-            </div>
 
             {/* Action Bar (socialHandles) */}
             <div className="w-full border-t border-[#1A1D26] pt-4 px-6 pb-6 select-none flex-shrink-0">
